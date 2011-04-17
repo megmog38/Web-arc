@@ -1,0 +1,18 @@
+#!/bin/sh
+##########################################################################
+# Copyright 2001-2008 VMware, Inc.  All rights reserved. -- VMware Confidential
+##########################################################################
+
+##########################################################################
+# DO NOT modify this file directly as it will be overwritten the next
+# time the VMware Tools are installed.
+##########################################################################
+
+echo `date` ": Executing '$0'"
+
+scriptsdir="`dirname $0`/scripts/`basename $0`.d"
+if [ -d "$scriptsdir" ]; then
+    for scriptfile in "$scriptsdir"/*; do
+	[ -x "$scriptfile" ] && "$scriptfile" poweroff-vm
+    done
+fi
